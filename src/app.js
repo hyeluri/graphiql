@@ -5,7 +5,7 @@ import fetch from 'isomorphic-fetch';
 import {buildClientSchema} from 'graphql/'
 
 function graphQLFetcher(graphQLParams) {
-
+  console.log(graphQLParams);
   var paramString = JSON.stringify(graphQLParams);
   var posSubscription = paramString.indexOf('subscriptionType { name }')
 
@@ -15,10 +15,11 @@ function graphQLFetcher(graphQLParams) {
 
   graphQLParams = JSON.parse(paramString);
 
-  return fetch('https://harish.dev.agkn.net:8443/api/v1.0/helloworld?query=' + encodeURIComponent(graphQLParams.query), {
-    method: 'get',
+  return fetch('https://harish.dev.agkn.net:8443/api/v1.0/helloworld', {
+    method: 'post',
     headers: { 'Content-Type': 'application/json' },
-    credentials: 'include'
+    credentials: 'include',
+    body:  graphQLParams.query
 
   })
   .then(response => response.json())
