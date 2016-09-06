@@ -23,32 +23,9 @@ function graphQLFetcher(graphQLParams) {
 
   })
   .then(response => response.json())
-  // .then(response => {
-  //   if(!response.data){
-  //     console.log(response);
-  //     return {data: response};
-  //   }
-  //   return response;
-  // });
-  // .then(response => {
-  //   if(posSubscription > -1){
-  //     let res = JSON.parse(res);
-  //     res.data.__schema.subscriptionType = null;
-  //     return JSON.stringify(res);
-  //   }
-  //   return response;
-  // });
 }
 
 ReactDOM.render(<GraphiQL fetcher={graphQLFetcher} />, document.querySelector("#app"));
 
 
-// fetch('/graphql', {
-//   method: 'post',
-//   headers: { 'Content-Type': 'application/json' },
-//   credentials: 'include',
-//   body:  JSON.stringify({query: '{viewer{id,name}}'})
 
-// })
-// .then(response => response.json())
-// .then(data=>console.log(data))
